@@ -69,23 +69,22 @@ jobs:
       run: echo "::set-output name=filename::`ls | grep .jar`"
 
   Release:
-    prod-check:
-      if: startsWith(github.ref, 'refs/tags/')
-      runs-on: ubuntu-latest
-      needs: [Compile, Test, Assemble]
-      
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    needs: [Compile, Test, Assemble]
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-        - uses: actions/download-artifact@v2
-          with:
-            name: buildJar
-            path: ${{needs.Assemble.outputs.filename}}
-            
-        - name: Release
-          uses: softprops/action-gh-release@v1
-          with:
-            files: ${{needs.Assemble.outputs.filename}}
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v2
+        with:
+          name: buildJar
+          path: ${{needs.Assemble.outputs.filename}}
+          
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{needs.Assemble.outputs.filename}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
