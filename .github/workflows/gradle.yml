@@ -63,6 +63,10 @@ jobs:
     - name: Assemble with Gradle
       run: ./gradlew assemble 
 
+    - name: test
+      run: 
+        echo `ls /build/`
+        echo `ls /build/libs/`
     - uses: actions/upload-artifact@v2
       with:
         name: buildJar
