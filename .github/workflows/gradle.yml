@@ -80,11 +80,11 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: buildJar
-          path: $FILE_NAME
+          path: ${{ env.FILE_NAME }}
           
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: $FILE_NAME
+          files: ${{ env.FILE_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
