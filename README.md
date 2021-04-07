@@ -1,2 +1,2 @@
-# st_nycu_lab4_309552014
-NYCU Software Testing Course - Lab 4: CI/CD with Github Actions
+# NYCU Software Testing Lab 4: CI/CD with Github Actions
+Let's play Rock Paper Scissors!
