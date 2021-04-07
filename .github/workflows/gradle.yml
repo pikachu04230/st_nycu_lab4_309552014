@@ -77,11 +77,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: test
+        run: echo `ls`
+
       - uses: actions/download-artifact@v2
         with:
           name: buildJar
           path: ${{ env.FILE_NAME }}
           
+      - name: test2
+        run: echo `ls`
+
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
