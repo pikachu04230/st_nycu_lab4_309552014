@@ -65,8 +65,7 @@ jobs:
 
     - name: test
       run: 
-        echo `ls /build/`
-        echo `ls /build/libs/`
+        echo `ls`
     - uses: actions/upload-artifact@v2
       with:
         name: buildJar
